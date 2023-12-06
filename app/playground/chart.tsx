@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { Card, AreaChart, Title, Text } from '@tremor/react';
+import { Card, AreaChart, Title, Text } from "@tremor/react";
 
 const data = [
   {
-    Month: 'Jan 21',
+    Month: "Jan 21",
     Sales: 2890,
     Profit: 2400
   },
   {
-    Month: 'Feb 21',
+    Month: "Feb 21",
     Sales: 1890,
     Profit: 1398
   },
   {
-    Month: 'Jan 22',
+    Month: "Jan 22",
     Sales: 3890,
     Profit: 2980
   }
@@ -28,11 +28,11 @@ export default function Example() {
       <AreaChart
         className="mt-4 h-80"
         data={data}
-        categories={['Sales', 'Profit']}
+        categories={["Sales", "Profit"]}
         index="Month"
-        colors={['indigo', 'fuchsia']}
+        colors={["indigo", "fuchsia"]}
         valueFormatter={(number: number) =>
-          `$ ${Intl.NumberFormat('us').format(number).toString()}`
+          `$ ${Intl.NumberFormat("us").format(number).toString()}`
         }
         yAxisWidth={60}
       />

@@ -49,7 +49,7 @@ CREATE TABLE users (
 Insert a row for testing:
 
 ```
-INSERT INTO users (id, email, name, username) VALUES (1, 'me@site.com', 'Me', 'username');
+INSERT INTO users (id, email, name, username) VALUES (1, 'garun@garunski.com', 'Me', 'garun@garunski.com');
 ```
 
 Finally, run the following commands to start the development server:
@@ -60,3 +60,5 @@ pnpm dev
 ```
 
 You should now be able to access the application at http://localhost:3000.
+
+https://github.com/vercel/nextjs-subscription-payments/blob/main/README.md

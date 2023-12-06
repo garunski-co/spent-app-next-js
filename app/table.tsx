@@ -6,7 +6,7 @@ import {
   TableBody,
   TableCell,
   Text
-} from '@tremor/react';
+} from "@tremor/react";
 
 interface User {
   id: number;

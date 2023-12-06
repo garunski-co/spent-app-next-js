@@ -1,36 +1,21 @@
-import { sql } from '@vercel/postgres';
-import { Card, Title, Text } from '@tremor/react';
-import Search from './search';
-import UsersTable from './table';
+"use client";
 
-interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-}
+import { POST } from "@/app/global/api-actions";
+import { Title } from "@tremor/react";
+import { Suspense } from "react";
+import useSWR from "swr";
 
-export default async function IndexPage({
-  searchParams
-}: {
-  searchParams: { q: string };
-}) {
-  const search = searchParams.q ?? '';
-  const result = await sql`
-    SELECT id, name, username, email 
-    FROM users 
-    WHERE name ILIKE ${'%' + search + '%'};
-  `;
-  const users = result.rows as User[];
+export default function IndexPage() {
+  const { data } = useSWR("/api/create-link-token", POST);
+
+  console.log("🚀 ~ file: page.tsx:13 ~ data:", data);
 
   return (
-    <main className="p-4 md:p-10 mx-auto max-w-7xl">
-      <Title>Users</Title>
-      <Text>A list of users retrieved from a Postgres database.</Text>
-      <Search />
-      <Card className="mt-6">
-        <UsersTable users={users} />
-      </Card>
-    </main>
+      <Suspense fallback={<h1>Loading posts...</h1>}>
+        <main className="p-4 md:p-10 mx-auto max-w-7xl">
+          <Title>Plaid Link</Title>
+          {JSON.stringify(data, null, 2)}
+        </main>
+      </Suspense>
   );
 }
